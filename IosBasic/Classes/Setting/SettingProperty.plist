@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>主题颜色</key>
+	<dict>
+		<key>Red</key>
+		<integer>0</integer>
+		<key>Green</key>
+		<integer>0</integer>
+		<key>Blue</key>
+		<integer>0</integer>
+		<key>Alpa</key>
+		<integer>0</integer>
+	</dict>
+	<key>底部标签栏</key>
+	<array>
+		<dict>
+			<key>kMainkey</key>
+			<string>首页</string>
+		</dict>
+		<dict>
+			<key>kStoreKey</key>
+			<string>店家</string>
+		</dict>
+		<dict>
+			<key>kGoodsKey</key>
+			<string>宝贝</string>
+		</dict>
+		<dict>
+			<key>kCommunityKey</key>
+			<string>社区</string>
+		</dict>
+		<dict>
+			<key>kMineKey</key>
+			<string>我的</string>
+		</dict>
+	</array>
+	<key>是否隐藏Banners</key>
+	<false/>
+	<key>是否隐藏主页工具栏</key>
+	<false/>
+	<key>好货推荐的名称</key>
+	<string>好货推荐</string>
+	<key>好货推荐是否隐藏</key>
+	<false/>
+	<key>最新资讯的名称</key>
+	<string>最新资讯</string>
+	<key>最新资讯是否隐藏</key>
+	<false/>
+</dict>
+</plist>

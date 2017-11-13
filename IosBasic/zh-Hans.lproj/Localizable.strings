@@ -1,0 +1,182 @@
+/* 
+  Localization.strings
+  IosBasic
+
+  Created by junshi on 15/12/22.
+  Copyright © 2015年 CRZ. All rights reserved.
+*/
+/* 主界面一级菜单*/
+"tab_home"="首页";
+"tab_investment"="我的投资";
+"tab_profile"="个人中心";
+
+"your_balance"="账户余额";
+"yesterday"="昨天";
+"total"="总计";
+"pay"="付";
+"get"="收";
+
+"totalIncome"="总收入";
+"totalInvestment"="总投资金额";
+"yesterdayChecking"="Yesterday Checking";
+"property"="资产";
+"income"="收入";
+"purchasedProducts"="已购买到产品";
+"addInvestment"="增加投资";
+
+"financial_products"="理财产品";
+"investment_cycle"="投资周期";
+
+"annualized_rate"="年利率";
+"days"="天";
+"total_investment"="总投资";
+"accumulative_interest"="累计利息";
+"investing_trend"="投资趋势";
+"introduction"="产品介绍";
+"buy"="购买";
+"transfer_in"="转入";
+"transfer_out"="转出";
+
+
+"messages"="信箱";
+"security"="安全";
+"invitation_code"="邀请码";
+"faq"="常见问题解答";
+"about_us"="关于我们";
+"logout"="退出";
+
+"detail"="详细 ";
+"mobile_phone"="手机号";
+"protect_account"="保护账号安全";
+"email"="电子邮箱";
+"find_password"="找回密码或改变手机号";
+"change_password"="修改秘密";
+"please_keep_safe"="请保护您的密码安全";
+"unbound"="未绑定";
+"binding"="绑定";
+
+"your_invitation_code"="您的邀请码";
+"invite_friends"="邀请您的朋友并获得奖励";
+"how_it_work"="如何使用";
+"moments"="朋友圈";
+"wechat"="微信";
+"facebook"="脸书";
+
+
+"confirm"="确认";
+"send_email"="系统将发送邮件给您";
+"security_code"="验证码";
+"get_security"="获取验证码";
+"reset_password"="重置密码";
+"password"="密码";
+"new_password"="新密码";
+"confirm_password"="重输密码";
+"password_changed"="密码已经修改过" ;
+"back_login"="重新登录";
+
+
+"country_region"="地区";
+"login"="登录";
+"login2"="登录";
+"register"="注册";
+"register2"="注册";
+"next"="下一步";
+"forgot_password"="忘记密码 ?";
+
+
+"bt_card"="BT 卡";
+"available_property"="可用资金";
+"total_property"="总资金";
+"btc_bill"="BT 卡账单";
+"recharge"="充值";
+"withdraw"="提现";
+
+"select_currency"="选择货币";
+"invite_code"="邀请码(选填)";
+"aud"="澳元"; 
+"cny"="人民币";
+"cny2"="元";
+
+"enter_amount"="输入充值金额";
+"recharged_comfirmed"="充值已提交";
+"recharge_take_while"="充值到账需要一会时间";
+"ok"="确定";
+"cancel"="取消";
+
+"select_currency"="选择货币";
+"amount_withdraw"="收入提现金额";
+"available"="可用金额 ： ";
+"withdraw_confirmed"="提现已提交";
+"withdraw_take"="提现将在5天内完成";
+
+
+"amount_send"="输入转账金额";
+"receiver_phone"="输入接收人手机号";
+"scan_qr"="扫描二维码";
+"safety_code"="输入您的安全码";
+"safety_code_invalid"="安全码无效";
+"try_again"="请重试";
+"set_safety_code"="设置安全码保障账号安全";
+"repeat"="再次输入";
+"or"="或者";
+"payment_confirmed"="付款已提交";
+"security_code_unconsistent"="两次安全码不一致";
+
+
+"china"="中国";
+"australia"="澳大利亚";
+
+"bt_address"="BTBank 地址";
+
+"e_mobile"="手机号码格式有误";
+"e_email"="邮箱格式有误";
+"e_price"="金额格式有误";
+"e_price_exceed"="金额超出账户余额";
+"e_password"="密码不能为空 ";
+"e_password_unconsistent"="两次密码不一致";
+"e_region"="请选择地区";
+"e_s_code"="验证码不能为空";
+"e_safety_code"="安全码必须是4位";
+
+"amount_transfer_in"="输入转入金额";
+"amount_transfer_out"="输入转出金额";
+"transfer_in_success"="转入成功";
+"transfer_out_success"="转出成功";
+
+"scan_bt_pay"="扫描二维码支付";
+"my_account"="我的账户";
+"register_success"="注册成功";
+"safety_success"="安全码保存成功";
+"buy_success"="购买成功 ";
+
+"email_bind"="邮箱已绑定";
+"email_unbind"="请先绑定邮箱";
+"email_confirm"="请求已提交，稍后将收到确认邮件";
+
+"reset_safety_code"="重新设置安全码";
+"change_safety_code"="修改安全码";
+"keep_safety_code_safe"="请保护您的支付密码安全";
+"safety_code_update_success"="支付密码修改成功";
+"password_update_success"="密码修改成功";
+
+"click_to_account"="点击进入我的账户";
+"finger_login"="指纹登录";
+"e_finger_login"="首次登陆请用手机号和密码登录";
+"t_finger_login"="请验证Touch ID 进行登录";
+"t_finger_pay"="请验证Touch ID 进行支付";
+
+"safety_question_1"="您父亲的名字 :";
+"safety_question_2"="你最喜欢的老师 :";
+"safety_question_3"="第一份工作 :";
+"question_null"="问题回答不能为空";
+"safety_question"="修改安全问题";
+"keep_question"="请保护您的问题答案安全";
+"question_success"=" 安全问题修改成功 ";
+"safety_code_success"="安全码修改成功";
+"back"="返回 ";
+
+"no"="交易号 : ";
+"payment_amount"="付款金额 : ";
+"payment_account"="付款账号 : ";
+"time"="时间 : ";
+

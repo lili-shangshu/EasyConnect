@@ -1,0 +1,179 @@
+/* 
+  Localization.strings
+  IosBasic
+
+  Created by junshi on 15/12/22.
+  Copyright © 2015年 CRZ. All rights reserved.
+*/
+
+/* 主界面一级菜单*/
+"tab_home"="Home";
+"tab_investment"="My Investment";
+"tab_profile"="Profile";
+
+
+"your_balance"="Your balance";
+"yesterday"="Yesterday";
+"total"="Total";
+"pay"="Pay";
+"get"="Get";
+
+"totalIncome"="Total Income";
+"totalInvestment"="Total Investment";
+"yesterdayChecking"="Yesterday Checking";
+"property"="Property";
+"income"="Income";
+"purchasedProducts"="Purchased Products";
+"addInvestment"="Add more investment";
+
+"financial_products"="Financial Products";
+"investment_cycle"="Investment Cycle";
+
+"annualized_rate"="Annualized Rate";
+"days"="days";
+"total_investment"="Total Investment";
+"accumulative_interest"="Accumulative Interest";
+"investing_trend"="Investing Trend";
+"introduction"="Introduction";
+"buy"="Buy";
+"transfer_in"="Transfer In";
+"transfer_out"="Transfer Out";
+
+"messages"="Messages";
+"security"="Security";
+"invitation_code"="Invitation Code";
+"faq"="FAQ";
+"about_us"="About us";
+"logout"="Logout";
+
+"detail"="Detail";
+"mobile_phone"="Mobile Phone";
+"protect_account"="Protect account security";
+"email"="E-mail";
+"find_password"="Find password or change phone number";
+"change_password"="Change Password";
+"please_keep_safe"="Please keep your password safe";
+"unbound"="Unbound";
+"binding"="Binding";
+
+"your_invitation_code"="Your Invitation Code";
+"invite_friends"="Invite your friends and get commision";
+"how_it_work"="How it works";
+"moments"="Moments";
+"wechat"="WeChat";
+"facebook"="Facebook";
+
+"confirm"="Confirm";
+"send_email"="System will snd an e-mail to you";
+"security_code"="Security Code";
+"get_security"="GET SECURITY CODE";
+"reset_password"="RESET PASSWORD";
+"password"="Password";
+"new_password"="New password";
+"confirm_password"="Confirm password";
+"password_changed"="Password has been changed";
+"back_login"="Back to login";
+
+
+"country_region"="Country Region";
+"login"="LOGIN";
+"login2"="Login";
+"register"="REGISTER";
+"register2"="Register";
+"next"="NEXT";
+"forgot_password"="Forgot Password ?";
+
+"bt_card"="BT Card";
+"available_property"="Available Property";
+"total_property"="Total Property";
+"btc_bill"="BTC Bill";
+"recharge"="Recharge";
+"withdraw"="Withdraw";
+
+"select_currency"="Select Currency";
+"invite_code"="Inivitation code(optional)";
+"aud"="AUD";
+"cny"="CNY";
+"cny2"="CNY";
+
+"enter_amount"="Enter Amount to Recharge";
+"recharged_comfirmed"="Recharged Confirmed";
+"recharge_take_while"="Recharge can take a while";
+"ok"="OK";
+"cancel"="Cancel";
+
+"select_currency"="Select Currency";
+"amount_withdraw"="Enter Amount to Withdraw";
+"available"="Available ：";
+"withdraw_confirmed"="Withdraw Confirmed";
+"withdraw_take"="Withdraw can take max 5 days";
+
+ "amount_send"="Enter Amount to Send";
+"receiver_phone"="Enter Receiver's Phone";
+"scan_qr"="Scan QR Code";
+"safety_code"="Input Your Safety Code";
+"safety_code_invalid"="Safety Code is invalid";
+"try_again"="Try again";
+"set_safety_code"="Set up your safety code to protect your account";
+"repeat"="Repeat";
+"or"="or";
+"payment_confirmed"="Payment Confirmed";
+"security_code_unconsistent"="Two security code is not consistent";
+
+"china"="China";
+"australia"="Australia";
+
+"bt_address"="BTBank Address";
+
+"e_mobile"="Phone number format is wrong";
+"e_email"="Email format is wrong";
+"e_price"="Money format is wrong";
+"e_price_exceed"="Amount exceeds the balance of the account";
+"e_password"="Password is null";
+"e_password_unconsistent"="Twice password is not consistent";
+"e_region"="Please select country region";
+"e_s_code"="Security code is null";
+"e_safety_code"="Safety code must be 4 bits";
+
+"amount_transfer_in"="Enter Amount to Transfer In";
+"amount_transfer_out"="Enter Amount to Transfer out";
+"transfer_in_success"="Transfer in success";
+"transfer_out_success"="Transfer out success";
+
+"scan_bt_pay"="Scan QR code to pay";
+"my_account"="My Account";
+"register_success"="Register success";
+"safety_success"="Safety code save success";
+"buy_success"="Buy success";
+
+"email_bind"="Email is bound";
+"email_unbind"="Please bind email first";
+"email_confirm"="The request has been submitted and will receive a confirmation email later";
+
+"reset_safety_code"="RESET SAFETY CODE";
+"change_safety_code"="Change Safety Code";
+"keep_safety_code_safe"="Please keep your safety code safe";
+"safety_code_update_success"="Safety code update success";
+"password_update_success"="Password update success";
+
+"click_to_account"="Click to my account";
+"finger_login"="Fingerprint Login";
+"e_finger_login"="Please login with phone and password fisrt time";
+
+"t_finger_login"="Please verify Touch ID to log in";
+"t_finger_pay"="Please verify Touch ID to pay";
+
+"safety_question_1"="Your father's name :";
+"safety_question_2"="Your favorite teacher :";
+"safety_question_3"="First job :";
+"question_null"="Question answer can't be null";
+"safety_question"="Change Safety Question Answer";
+"keep_question"="Plese keep question answer safety";
+"question_success"="Safety question answer update success";
+"safety_code_success"="Safety code update success";
+"back"="Back";
+
+"no"="NO : ";
+"payment_amount"="Payment Amount : ";
+"payment_account"="Payment Account : ";
+"time"="Time : ";

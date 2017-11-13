@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BBF9184F-518B-4666-A091-BF59C5D50BD8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>StraightPin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>b7e76601-927a-44ae-b4c6-4f7ed528946c++5326</key>
+		<string>svn://115.28.85.98/ios</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>StraightPin/StraightPin.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>b7e76601-927a-44ae-b4c6-4f7ed528946c++5326</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>b7e76601-927a-44ae-b4c6-4f7ed528946c++5326</key>
+		<string>svn://115.28.85.98</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>svn://115.28.85.98/ios/StraightPin/StraightPin.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>b7e76601-927a-44ae-b4c6-4f7ed528946c++5326</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>b7e76601-927a-44ae-b4c6-4f7ed528946c++5326</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
