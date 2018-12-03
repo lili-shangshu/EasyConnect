@@ -23,45 +23,30 @@
     return [SPMember MR_findFirstByAttribute:@"id" withValue:memberId];
 }
 
-+ (instancetype)saveMember:(MemberObject *)member
-{
+
++ (instancetype)saveECMember:(ECMemberObject *)member{
     SPMember *m = [SPMember MR_findFirstByAttribute:@"id" withValue:member.id];
-    
     if (!m) {
         m = [SPMember MR_createEntity];
     }
     m.id = member.id;
-    m.name = member.name;
-    
-    m.email = member.email;
-    m.phone = member.phone;
-    
-    MR_SaveToPersitent_For_CurrentThread;
-    
-    return  m;
-}
-
-+ (instancetype)saveECMember:(ECMemberObject *)member{
-    SPMember *m = [SPMember MR_findFirstByAttribute:@"id" withValue:member.userId];
-    
-    if (!m) {
-        m = [SPMember MR_createEntity];
-    }
-    m.id = member.userId;
-    m.name = member.name;
-    m.email = member.email;
-    m.nickName = member.nickName;
-    m.gender = member.gender;
-    m.phone = member.phone;
-    m.avatar = member.avatar;
     m.memberShell = member.member_user_shell;
-    m.totalCost = member.totalCost;
-    m.levelStr = member.level;
-    m.balanceNum = member.balanceNum;
+    m.name = member.name;
+    m.work_num = member.work_num;
+    m.token = member.token;
+    m.isAccept = member.isAccept;
+    m.email = member.email;
+    m.phone = member.phone;
+   
+        // 测试数据
+//    m.start_time = @(1511774594);
+
     
+    m.start_time = member.start_time;
+    m.end_time = member.end_time;
+    m.state = member.state;
     
     MR_SaveToPersitent_For_CurrentThread;
-    
     return  m;
 }
 
@@ -92,15 +77,16 @@
 + (void)updateMemberInfo
 {
     if([NADefaults sharedDefaults].currentMemberId){
-        NSString *udid =  NAGetUDID();
-//        NSString *token = @"";
+         NSString *token = @"";
+        if ([NADefaults sharedDefaults].deviceToken) {
+            token = [NADefaults sharedDefaults].deviceToken;
+        }
         // 获取版本号
         NSString *versionString = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-
-        NSString *userName = [NSString stringWithFormat:@"%@%@",[NADefaults sharedDefaults].phone,[NADefaults sharedDefaults].username] ;
-        NSDictionary *params = @{m_name : userName,
+        NSDictionary *params = @{m_name : [NADefaults sharedDefaults].username,
                                  m_password :[NADefaults sharedDefaults].password,
-                                 m_udid : udid,
+                                 m_token : token,
+                                 m_udid:NAGetUDID(),
                                  @"os_type":@"ios",
                                  m_ver:versionString
                                  };
@@ -108,13 +94,13 @@
             if (succeeded) {
                 ECMemberObject *obj = responseObject;
                 [SPMember saveECMember:obj];
-                NAPostNotification(kSPLoginStatusChanged, nil);
+                [NADefaults sharedDefaults].currentMemberId = obj.id;
             }else
             {
                 [NADefaults sharedDefaults].currentMemberId = nil;
-                 NAPostNotification(NoticeReLogin, nil);
                  NSLog(@"error");
             }
+             NAPostNotification(kSPLoginStatusChanged, nil);
         }];
 
     }

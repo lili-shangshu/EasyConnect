@@ -18,7 +18,7 @@
 @property (retain, nonatomic) SPMainTabBarController *mainTabbarController;
 @property (strong, nonatomic) NSString *language;
 
-@property (nonatomic,strong) NSArray *cityArray;
+@property (nonatomic,strong) NSArray *messageArray;
 @property (nonatomic,strong) NSArray *territoryArray;
 @property (nonatomic,strong) NSArray *categoryArray;
 

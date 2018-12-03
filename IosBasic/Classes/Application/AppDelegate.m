@@ -15,15 +15,17 @@
 #import "FGUncaughtExceptionHandler.h"
 #import "SPNetworkManager.h"
 #import "SPMember.h"
+
+#import <UserNotifications/UserNotifications.h>
+#import "ChatController.h"
 // Debug
 
 //#import "BraintreeCore.h"
 //#import <GoogleMaps/GoogleMaps.h>
 
-#import "MainController.h"
-#import "MineController.h"
-#import "ShoppingCartController.h"
-#import "ClassifyViewController.h"
+#import "EBBannerView.h"
+
+#import "TImerViewController.h"
 
 #import "PushMessageController.h"
 #import <Bugly/Bugly.h>
@@ -31,6 +33,8 @@
 
 @interface AppDelegate () <UINavigationControllerDelegate>
 @property (nonatomic,strong) NANavigationController *navController;
+
+@property(nonatomic)NSInteger typeNum; // 1 内部推送，2 无内部推送
 
 @end
 
@@ -56,8 +60,7 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
         [self handleRemoteNotifications:userInfo];
     }
     
-//    [MLBlackTransition validatePanPackWithMLBlackTransitionGestureRecognizerType:MLBlackTransitionGestureRecognizerTypeScreenEdgePan];
-    
+    self.typeNum = 2;
     
     // Register Database
     [MagicalRecord setDefaultModelNamed:@"StraightPin.momd"];
@@ -65,45 +68,64 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
     
     [self setupMainControllers];
     
-    //设置 SVProgress 颜色
-   // [SVProgressHUD setForegroundColor:[UIColor spLightRedColor]];
+    [NADefaults sharedDefaults].cartNumber = 1;
     
-    [Bugly startWithAppId:@"f4d455bd82"];
+    //获取系统语言
+//    [self getCurrentLanguage];
+    [self setupBasicData];
+    
+    //设置 SVProgress 颜色
+    [SVProgressHUD setBackgroundColor:[UIColor blackColor]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    
+    [Bugly startWithAppId:@"826b962dd1"];
     
     [[NADefaults sharedDefaults] registerDefaults];
     
-    
-    
-    // google Map service
-  //  [GMSServices provideAPIKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"googleMapKey"]];
-    
+
     // 远程推送
-    // iOS 9 
-//    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-//        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge |UIUserNotificationTypeSound);
-//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
-//        [application registerUserNotificationSettings:settings];
-//        [application registerForRemoteNotifications];
-//        
-//    } else {
-//        // Register for Push Notifications before iOS 8
-//        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeAlert |UIRemoteNotificationTypeSound)];
-//    }
-//
-//    if ([UIApplication sharedApplication].applicationIconBadgeNumber>0) {
-//        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-//    }
+    [self setnotificationWithapplication:application];
     
 
     
-    //获取系统语言
-    [self getCurrentLanguage];
-    
-    [self setupBasicData];
+
     
     return YES;
 }
 
+- (void)setnotificationWithapplication:(UIApplication *)application{
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
+        //iOS 10
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (!error) {
+                NSLog(@"request authorization succeeded!");
+            }
+        }];
+        [application registerForRemoteNotifications];
+        
+    }else{
+        // iOS 9
+        if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            
+            UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge |UIUserNotificationTypeSound);
+            
+            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
+            
+            [application registerUserNotificationSettings:settings];
+            
+            [application registerForRemoteNotifications];
+            
+        } else {
+            
+            // Register for Push Notifications before iOS 8
+            
+            [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeAlert |UIRemoteNotificationTypeSound)];
+            
+        }
+        
+    }
+}
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 90000
 //- (BOOL)application:(__unused UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
 //    if ([[url.scheme lowercaseString] isEqualToString:[braintreePaymentsURLScheme lowercaseString]]) {
@@ -157,6 +179,10 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    
+    NSLog(@"进入后台-锁屏和home后调用");
+    self.typeNum = 2;
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -171,7 +197,10 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
     // 涉及第二次登录的接口
     [SPMember updateMemberInfo];
    
-    [self updateVersion];
+   [self updateVersion];
+    
+    NSLog(@"唤起");
+    self.typeNum = 1;
     
 }
 
@@ -179,6 +208,9 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    
+   
+    
     [MagicalRecord cleanUp];
 }
 
@@ -189,9 +221,10 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
 
 
 - (void)setupBasicData{
-    [[SPNetworkManager sharedClient]getCityWithCompletion:^(BOOL succeeded, id responseObject, NSError *error) {
+    // 获取常用的聊天短语
+    [[SPNetworkManager sharedClient] getMessageListWithParams:nil completion:^(BOOL succeeded, id responseObject, NSError *error) {
         if (succeeded) {
-            NSLog(@"=====获取地址信息完成=======");
+            self.messageArray = responseObject;
         }
     }];
 
@@ -202,7 +235,7 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
 
 - (void)updateVersion
 {
-    NSDictionary *params = @{@"id":@"ios"};
+    NSDictionary *params = @{@"os_type":@"1"};
     // 请求参数是id=ios和android
     [[SPNetworkManager sharedClient] getAppVersion:params completion:^(BOOL succeeded, id responseObject ,NSError *error){
         if (succeeded) {
@@ -216,8 +249,10 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
 - (void)setupMainControllers
 {
     // 获取基本数据时，加载数据获取购物车中的商品数，待返回个数后设置购物车显示个数，通过在SPMainTabBarController 中的通知中心 显示。
-    NANavigationController *navController = [[NANavigationController alloc] initWithRootViewController:self.mainTabbarController];
 
+    
+    TImerViewController *mainVC = [[TImerViewController alloc]init];
+    NANavigationController *navController = [[NANavigationController alloc] initWithRootViewController:mainVC];
     // 这里设置背景色－－－日啊
     [navController applyAppDefaultApprence];
     
@@ -232,69 +267,7 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
 }
 
 
--(SPMainTabBarController *)mainTabbarController{
-    if (!_mainTabbarController) {
-        
-        MainController *mainVC = [[MainController alloc]init];
-        mainVC.tabBarController.title =  NSLocalizedString(@"tab_home", @"");
-        
-        ClassifyViewController *classifyVC = [[ClassifyViewController alloc]init];
-        classifyVC.tabBarController.title =  NSLocalizedString(@"my_account", @"");
-        
-        ShoppingCartController *shopCartVC = [[ShoppingCartController alloc]init];
-        shopCartVC.tabBarController.title = NSLocalizedString(@"tab_investment", @"");
-        
-        MineController *mineVC = [[MineController alloc]init];
-        mineVC.tabBarController.title = NSLocalizedString(@"tab_profile", @"");
-        
-        mainVC.inTabBarController = YES;
-        mainVC.inNavController = YES;
-        classifyVC.inTabBarController = YES;
-        classifyVC.inNavController = YES;
-        shopCartVC.inTabBarController = YES;
-        shopCartVC.inNavController = YES;
-        mineVC.inTabBarController = YES;
-        mineVC.inNavController = YES;
-        
-        
-        UITabBarItem *item1 = [UITabBarItem itemWithTitle:@"首页" image:[UIImage imageNamed:@"ic_tab_home"] selectedImage:[UIImage imageNamed:@"ic_tab_home"]];
-        [item1 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                       [UIColor spThemeColor],NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
-        mainVC.tabBarItem = item1;
-        
-        UITabBarItem *item2 = [UITabBarItem itemWithTitle:@"分类" image:[UIImage imageNamed:@"ic_tab_classify"] selectedImage:[UIImage imageNamed:@"ic_tab_classify"]];
-        [item2 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                       [UIColor spThemeColor],NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
-        classifyVC.tabBarItem = item2;
-        
-        UITabBarItem *item3 = [UITabBarItem itemWithTitle:@"购物车" image:[UIImage imageNamed:@"ic_tab_cart"] selectedImage:[UIImage imageNamed:@"ic_tab_cart"]];
-        [item3 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                       [UIColor spThemeColor],NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
-        shopCartVC.tabBarItem = item3;
-        
-        UITabBarItem *item4 = [UITabBarItem itemWithTitle:@"个人中心" image:[UIImage imageNamed:@"ic_tab_my"] selectedImage:[UIImage imageNamed:@"ic_tab_my"]];
-        [item4 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                       [UIColor spThemeColor],NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
-        mineVC.tabBarItem = item4;
-        
-        SPMainTabBarController *tabbarController = [[SPMainTabBarController alloc] init];
-        tabbarController.viewControllers = @[mainVC,classifyVC,shopCartVC,mineVC];
-        ////// Try
-        UITabBar *tabBar = tabbarController.tabBar;
-        //设置 tabBar 背景颜色
-        [tabBar setBackgroundImage:[[UIColor whiteColor] image]];
 
-        // UITabBarItem 选中item 颜色设置
-        tabBar.tintColor = [UIColor spThemeColor];
-        tabbarController.selectedIndex = 0;
-        tabbarController.customizableViewControllers = nil;
-        
-        // Navigation
-        _mainTabbarController = tabbarController;
-
-    }
-    return _mainTabbarController;
-}
 ////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Navigation Delegate
 ////////////////////////////////////////////////////////////////////////////////////
@@ -326,9 +299,8 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
     [NADefaults sharedDefaults].deviceToken = pushToken;
     SPMember *member = [SPMember currentMember];
     if(member){
-        NSDictionary *params = @{m_id:member.id,m_lang:[NADefaults sharedDefaults].lang,
+        NSDictionary *params = @{m_id:member.id,
                                  m_token:pushToken,m_member_user_shell:member.memberShell};
-
         [[SPNetworkManager sharedClient] postTokenWithParams:params completion:^(BOOL succeeded, id responseObject ,NSError *error){
             if (succeeded){}else{}
         }];
@@ -346,12 +318,23 @@ NSString *wechatURLScheme = @"wx60853248b3416743";
 #pragma mark 接收到推送通知之后
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"receiveRemoteNotification,userInfo is %@",userInfo);
-
     NSDictionary *aps = userInfo[@"aps"];
-    PushMessageController *controller = [[PushMessageController alloc] init];
-    controller.message = aps[@"alert"];
-
-    [self.navController  pushViewController:controller animated:YES];
+    NSLog(@"%@",aps);
+    // 接收到推送后，需要发出通知，跳转到聊天页面。
+    SPMember *member = [SPMember currentMember];
+    if(member){
+        if ([NADefaults sharedDefaults].cartNumber ==1) {
+            if (self.typeNum == 1) {
+                // 调用内部推送。
+                if ([aps checkObjectForKey:@"alert"]) {
+                    [EBBannerView showWithContent:aps[@"alert"]];
+                }
+            }
+             [[NSNotificationCenter defaultCenter] postNotificationName:kSisTime object:nil userInfo:nil];
+        }else{
+             [[NSNotificationCenter defaultCenter] postNotificationName:kSisChat object:nil userInfo:nil];
+        }
+    }
 }
 
 -(void)handleRemoteNotifications:(NSDictionary *)userInfo {

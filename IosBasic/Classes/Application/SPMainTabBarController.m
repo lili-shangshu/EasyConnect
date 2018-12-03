@@ -12,9 +12,6 @@
 
 
 
-#import "ShoppingCartController.h"
-#import "MineController.h"
-
 #import "SPMainTabBarController.h"
 #import "SPNetworkManager.h"
 #import "NANumberView.h"
@@ -65,12 +62,7 @@
 }
 
 - (void)updateCart:(NSNotification*) aNotification{
-//         [self.tabBar showBagePont:YES forIndex:3];
-    if (self.currentMember) {
-        [self.tabBar showBagePont:YES withNum:[NADefaults sharedDefaults].cartNumber forIndex:2];
-    }else{
-        [self.tabBar showBagePont:NO withNum:[NADefaults sharedDefaults].cartNumber forIndex:2];
-    }
+
 }
 
 
@@ -98,24 +90,6 @@
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
-    
-    if ([viewController isKindOfClass:[ShoppingCartController class]]) {
-        return [self shouldPresentLoginControllerWithCompletion:^(BOOL succeed){
-            if (succeed) {
-                tabBarController.selectedViewController = viewController;
-                [[(ShoppingCartController *)viewController tableView] reloadData];
-
-            }
-        }];
-    }else if ([viewController isKindOfClass:[MineController class]]){
-        return [self shouldPresentLoginControllerWithCompletion:^(BOOL succeed){
-            if (succeed) {
-                tabBarController.selectedViewController = viewController;
-                [[(ShoppingCartController *)viewController tableView] reloadData];
-                
-            }
-        }];
-    }
     return YES;
 }
 

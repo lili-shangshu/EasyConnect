@@ -7,12 +7,14 @@ target ‘IosBasic’ do
     pod 'PSAlertView', '~> 2.0.3'
     pod 'CTAssetsPickerController', '~> 2.9.2'
     pod 'NJKWebViewProgress', '~> 0.2.3'
+#    pod 'JBWebViewController', '~> 1.0.6'
     pod 'DZNWebViewController', '~> 3.0'
     pod 'Reachability', '~> 3.2'
     pod 'YYModel', '~> 1.0.2'
     pod 'IQKeyboardManager', '~> 4.0.10'
     pod 'ARChromeActivity', '~> 1.0.6'
     pod 'ARSafariActivity', '~> 1.0.4'
+    
 end
 
 

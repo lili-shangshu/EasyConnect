@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IosBasic/Classes/Network/SPNetworkManager.m"
-            timestampString = "531904434.057244"
+            timestampString = "552383294.262278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1707"
-            endingLineNumber = "1707"
+            startingLineNumber = "1812"
+            endingLineNumber = "1812"
             landmarkName = "-postErrorWithString:completion:"
             landmarkType = "7">
          </BreakpointContent>
@@ -32,6 +32,22 @@
             startingLineNumber = "353"
             endingLineNumber = "353"
             landmarkName = "-searchBarTextDidEndEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IosBasic/Classes/&#x6613;&#x901a;/TImerViewController.m"
+            timestampString = "565494659.170341"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-updateLocation"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

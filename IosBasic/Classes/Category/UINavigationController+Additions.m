@@ -22,21 +22,6 @@
                                             }];
     //设置返回按钮颜色
     navigationBar.tintColor = [UIColor whiteColor];
-
-    
-    //设置返回样式图片
-//    UIImage *image = [UIImage imageNamed:@"navi_back"];
-//    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    navigationBar.backIndicatorImage = image;
-//    navigationBar.backIndicatorTransitionMaskImage = image;
-    
-    //偏移隐藏返回文字
-//    UIBarButtonItem *buttonItem = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
-//    UIOffset offset;
-//    offset.horizontal = - 500;
-//    offset.vertical =  - 500;
-//    [buttonItem setBackButtonTitlePositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
-
     navigationBar.translucent = NO;
     
     [UINavigationController applyDefaultApprence];
@@ -45,12 +30,12 @@
 + (void)applyDefaultApprence
 {
     // 设置导航栏背景色
-    [[UINavigationBar appearance] setBackgroundImage:[[UIColor NA_ColorWithR:57 g:173 b:210] image]
+    [[UINavigationBar appearance] setBackgroundImage:[[UIColor NA_ColorWithR:36 g:44 b:72] image]
                                       forBarPosition:UIBarPositionAny
                                           barMetrics:UIBarMetricsDefault];
 
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     
 }

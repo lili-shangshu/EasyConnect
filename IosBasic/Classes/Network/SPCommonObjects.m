@@ -29,6 +29,23 @@
 }
 @end
 
+@implementation ChatMessageObject
+
+-(NSString *)sendTimeStr{
+    NSDate *tiiii = [NSDate dateWithTimeIntervalSince1970:[self.sendTime doubleValue]];
+    NSString *ttttt = NAStringFromDate(@"yyyy-MM-dd HH:mm", tiiii);
+    return ttttt;
+}
+
++(NSDictionary*)modelCustomPropertyMapper{
+    return @{ @"type":@"status",
+              @"content":@"message",
+              @"sendTime":@"create_time"
+              };
+}
+
+@end
+
 @implementation ECCityObject
 +(NSDictionary*)modelCustomPropertyMapper{
     return @{ @"idNumber":@"pic_id",
@@ -213,16 +230,17 @@
 @implementation ECMemberObject
 +(NSDictionary*)modelCustomPropertyMapper{
     return @{ @"userId":@"id",
-              @"nickName":@"nickName",
-              @"name":@"name",
-              @"avatar":@"avatar",
-              @"gender":@"gender",
-              @"email":@"email",
-              @"phone":@"phone",
-              @"member_user_shell":@"member_user_shell",
+              @"isAccept":@"is_notify",
+              @"member_user_shell":@"member_shell",
               };
 }
-
+-(NSNumber *)state{
+    if ([self.start_time intValue]!=0) {
+        return @2;
+    }else{
+        return @1;
+    }
+}
 @end
 
 @implementation ECOrdersObject
@@ -463,9 +481,9 @@
     SPVersionObject *object = [[SPVersionObject alloc] init];
     object.objectDict = dict;
 
-    if ([dict checkObjectForKey:m_version]) object.version = dict[m_version];
-    if ([dict checkObjectForKey:m_intro]) object.intro = dict[m_intro];
-    if ([dict checkObjectForKey:m_app_url]) object.url = dict[m_app_url];
+    if ([dict checkObjectForKey:@"ios_verNo"]) object.version = dict[@"ios_verNo"];
+    if ([dict checkObjectForKey:@"ios_intro"]) object.intro = dict[@"ios_intro"];
+    if ([dict checkObjectForKey:@"ios_appUrl"]) object.url = dict[@"ios_appUrl"];
     
     return object;
 }

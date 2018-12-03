@@ -59,7 +59,7 @@
     }
     _splashView = [[SKSplashView alloc] initWithBackgroundImage:launchImage animationType:SKSplashAnimationTypeFade];
     _splashView.delegate = self; //Optional -> if you want to receive updates on animation beginning/end
-    _splashView.animationDuration = 1.5f; //Optional -> set animation duration. Default: 1s
+    _splashView.animationDuration = 1.5; //Optional -> set animation duration. Default: 1s
     [self addSubview:_splashView];
     [_splashView startAnimation];
 }

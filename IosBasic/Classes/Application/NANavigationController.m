@@ -23,7 +23,13 @@
     // 自定义 leftbutton 后 让 手势效果依旧生效
     self.PopDelegate = self.interactivePopGestureRecognizer.delegate;
     self.delegate = self;
+    
+
+    
+    
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

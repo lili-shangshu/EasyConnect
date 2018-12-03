@@ -33,7 +33,6 @@
     [super viewDidLoad];
     
   //  [self initData];
-    NSLog(@"test Git");
     
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, NAScreenWidth, NAScreenHeight-kNavigationHeight)];

@@ -17,7 +17,6 @@
 		083E347776F8F63FE3B9198D81A96083 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC8F7C7B93F1BA52606FCA37EB0F83E /* AFNetworkActivityIndicatorManager.m */; };
 		08C263DF6F9031C2ED55A0D16722652A /* IQUIView+IQKeyboardToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 05015E93062D281B735D9064DC725B23 /* IQUIView+IQKeyboardToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09F022CAA084FFC92FB28F90ED8FC9A1 /* NJKWebViewProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F732E8F8E2834F223DF01EE14E2A579 /* NJKWebViewProgress-dummy.m */; };
-		09F376727B32B085C8B78732A21DBB11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3F1D5B995EAC8533494BD4272BCD4 /* Foundation.framework */; };
 		0AEF0B198FB165F00DA88B5858C6F3F8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1959D7F39DC6B7C4358E6388F3D49A2D /* CoreFoundation.framework */; };
 		0B8F1D1B52495A77AC197F9224D571D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3F1D5B995EAC8533494BD4272BCD4 /* Foundation.framework */; };
 		0BE65C7E618A4E3E3985FB3F091EF672 /* NSManagedObject+MagicalAggregation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315F56084DD568DD717C4C5305F046D /* NSManagedObject+MagicalAggregation.m */; };
@@ -257,13 +256,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2BD30CBF530AE83A9C99C2E848039164 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 344B9D4E0D61825D02C791E133E04AA5;
-			remoteInfo = ARChromeActivity;
-		};
 		3F46EC0D7EE6732FB4780CBF92289380 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -334,20 +326,6 @@
 			remoteGlobalIDString = 0698BA029C69B3F5A540A208AD735EB4;
 			remoteInfo = YYModel;
 		};
-		CBF3297C626954DA39B672A1E7FAE4B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0417F48272F557B7A82B1879E71B4239;
-			remoteInfo = ARSafariActivity;
-		};
-		D1D6A0665BF35B2DA75CA4463DAF75E2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7D5A9D0899E53961A1A1E8D8003CE785;
-			remoteInfo = NJKWebViewProgress;
-		};
 		D984F96E8C4E7A4BC6CA1E6BF8B807A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -362,13 +340,6 @@
 			remoteGlobalIDString = 344B9D4E0D61825D02C791E133E04AA5;
 			remoteInfo = ARChromeActivity;
 		};
-		F2A8EDE00A897BAFAC90776BE13787B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3191D96B313FC13D519F14CCDDAABFA7;
-			remoteInfo = JBWebViewController;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -379,7 +350,6 @@
 		05015E93062D281B735D9064DC725B23 /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUIView+IQKeyboardToolbar.h"; path = "IQKeyboardManager/IQToolbar/IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
 		060BDC306651F01665DD96447C281E2C /* ARSafariActivity-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ARSafariActivity-prefix.pch"; sourceTree = "<group>"; };
 		06ADEF9B97843057CB6F3304F59F417D /* dzn_icn_toolbar_backward@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "dzn_icn_toolbar_backward@3x.png"; path = "Source/Resources/dzn_icn_toolbar_backward@3x.png"; sourceTree = "<group>"; };
-		070182BD88CF911CDDA1E497CD1BDE32 /* libJBWebViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJBWebViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A8C110BFB3AB12956A57ED1167FA3E /* Pods-IosBasic-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IosBasic-frameworks.sh"; sourceTree = "<group>"; };
 		07CAB3DC956487F0253EDC6E9B7CCD94 /* CTAssetsViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTAssetsViewController.h; path = CTAssetsPickerController/CTAssetsViewController.h; sourceTree = "<group>"; };
 		086C182338BA729247D69156057BB667 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -758,14 +728,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				406EF6C36859E20E3F0D589122B54029 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5B4D7586465BE1261E3DB50343F7E92E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				09F376727B32B085C8B78732A21DBB11 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1480,7 +1442,6 @@
 				FA7FBD0B321F1047E3F581062F3CE284 /* libCTAssetsPickerController.a */,
 				4A1ECC1F9F2B6CAFF660538D1DE746AE /* libDZNWebViewController.a */,
 				4E88192AB95C2FA64EF621C65B830667 /* libIQKeyboardManager.a */,
-				070182BD88CF911CDDA1E497CD1BDE32 /* libJBWebViewController.a */,
 				9321C6BFAFAB8A1BE01FECBBB47E3E0C /* libMagicalRecord.a */,
 				DCF170B78CEC5DCD7E4D7FF21EF42204 /* libNJKWebViewProgress.a */,
 				D8DCBB60DE8A9B7D69B635C38D692B1B /* libPods-IosBasic.a */,
@@ -1690,13 +1651,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F10857736F3FBC6733CEF0F70D92E8D2 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FC09FD627C9784952B9823F0C99389DC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1790,26 +1744,6 @@
 			name = "Pods-IosBasicTests";
 			productName = "Pods-IosBasicTests";
 			productReference = ECB076F7E0FA12984B7CCD9B9F3090E5 /* libPods-IosBasicTests.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		3191D96B313FC13D519F14CCDDAABFA7 /* JBWebViewController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3EDBC73A3A867FAF805F6AD8BA76E535 /* Build configuration list for PBXNativeTarget "JBWebViewController" */;
-			buildPhases = (
-				2975B97AFCFD0CBD33B46B1E3F2D5A06 /* Sources */,
-				5B4D7586465BE1261E3DB50343F7E92E /* Frameworks */,
-				F10857736F3FBC6733CEF0F70D92E8D2 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8A232D99E07D4BE6F49023EF900D8A9F /* PBXTargetDependency */,
-				444E80BAF6A547566588AA161C46660D /* PBXTargetDependency */,
-				E2F3512B92D8E375545EFD18DDD9258C /* PBXTargetDependency */,
-			);
-			name = JBWebViewController;
-			productName = JBWebViewController;
-			productReference = 070182BD88CF911CDDA1E497CD1BDE32 /* libJBWebViewController.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		344B9D4E0D61825D02C791E133E04AA5 /* ARChromeActivity */ = {
@@ -1947,7 +1881,6 @@
 				2819EE2E968828CDEE02723A000A5B25 /* PBXTargetDependency */,
 				2E1554603FC15115F764DDC71F831BE9 /* PBXTargetDependency */,
 				7933DF4A2983D2E1903735025F4B86F1 /* PBXTargetDependency */,
-				2B6FB3509B937CE25619D552C19BF725 /* PBXTargetDependency */,
 				EE06EEF61CA21E6F75F2E4D688621722 /* PBXTargetDependency */,
 				7040539E7737B3083769F5DF76948C84 /* PBXTargetDependency */,
 				9AAA6CD85192931D7094922A1F0F8BDA /* PBXTargetDependency */,
@@ -2022,7 +1955,6 @@
 				7445BE2A1AE914A59900D53FBADF9B78 /* CTAssetsPickerController-CTAssetsPickerController */,
 				1B24BCF24BAA6C3322C29873A03E6B07 /* DZNWebViewController */,
 				904F4F27FD314010A3812EB2A9306183 /* IQKeyboardManager */,
-				3191D96B313FC13D519F14CCDDAABFA7 /* JBWebViewController */,
 				417EA9844EC286C5B1B8FCB029C00130 /* MagicalRecord */,
 				7D5A9D0899E53961A1A1E8D8003CE785 /* NJKWebViewProgress */,
 				92E9F758212AAD73B917484B5E778C6A /* Pods-IosBasic */,
@@ -2119,13 +2051,6 @@
 				09F022CAA084FFC92FB28F90ED8FC9A1 /* NJKWebViewProgress-dummy.m in Sources */,
 				58740FD7394B6E5F41719CF982A54D70 /* NJKWebViewProgress.m in Sources */,
 				72D65920D300DED37F02CA19ABDE040A /* NJKWebViewProgressView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2975B97AFCFD0CBD33B46B1E3F2D5A06 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2281,12 +2206,6 @@
 			target = 998C8A8F66FC63FD47DA1E7F34994374 /* CTAssetsPickerController */;
 			targetProxy = 901C780C0B6A523561CB5F1CE8B6E341 /* PBXContainerItemProxy */;
 		};
-		2B6FB3509B937CE25619D552C19BF725 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = JBWebViewController;
-			target = 3191D96B313FC13D519F14CCDDAABFA7 /* JBWebViewController */;
-			targetProxy = F2A8EDE00A897BAFAC90776BE13787B0 /* PBXContainerItemProxy */;
-		};
 		2E1554603FC15115F764DDC71F831BE9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DZNWebViewController;
@@ -2298,12 +2217,6 @@
 			name = ARChromeActivity;
 			target = 344B9D4E0D61825D02C791E133E04AA5 /* ARChromeActivity */;
 			targetProxy = DD20774A716C2CE06CD5BEABD686A9C2 /* PBXContainerItemProxy */;
-		};
-		444E80BAF6A547566588AA161C46660D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ARSafariActivity;
-			target = 0417F48272F557B7A82B1879E71B4239 /* ARSafariActivity */;
-			targetProxy = CBF3297C626954DA39B672A1E7FAE4B1 /* PBXContainerItemProxy */;
 		};
 		447E92C2B98A0AABA1749AB025084A41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2341,12 +2254,6 @@
 			target = 0417F48272F557B7A82B1879E71B4239 /* ARSafariActivity */;
 			targetProxy = 498702113CD8D797BB3DC292BB5C6CF4 /* PBXContainerItemProxy */;
 		};
-		8A232D99E07D4BE6F49023EF900D8A9F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ARChromeActivity;
-			target = 344B9D4E0D61825D02C791E133E04AA5 /* ARChromeActivity */;
-			targetProxy = 2BD30CBF530AE83A9C99C2E848039164 /* PBXContainerItemProxy */;
-		};
 		99E3614D68726981D7DEA3788468E2EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AFNetworking;
@@ -2358,12 +2265,6 @@
 			name = PSAlertView;
 			target = 3E1BD5A7934D7AE095E8B4E4A3860008 /* PSAlertView */;
 			targetProxy = 874F1F5CA06785AAEF3073CDB362983A /* PBXContainerItemProxy */;
-		};
-		E2F3512B92D8E375545EFD18DDD9258C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = NJKWebViewProgress;
-			target = 7D5A9D0899E53961A1A1E8D8003CE785 /* NJKWebViewProgress */;
-			targetProxy = D1D6A0665BF35B2DA75CA4463DAF75E2 /* PBXContainerItemProxy */;
 		};
 		EE06EEF61CA21E6F75F2E4D688621722 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2688,28 +2589,6 @@
 			};
 			name = Debug;
 		};
-		90AAC7F06EB16BD045B985FDDC4DEE21 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/JBWebViewController/JBWebViewController-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 		92F415033A0E6011D4C9F2D59DB4F419 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6ED2585F26C252B28E41913760722A2 /* IQKeyboardManager.xcconfig */;
@@ -2887,28 +2766,6 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
-		};
-		BA2B652509922986DE1D85AF80EB2B27 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/JBWebViewController/JBWebViewController-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
 		};
 		BEF744FA02305D3F1ECED15F85E525C2 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -3186,15 +3043,6 @@
 			buildConfigurations = (
 				11D837E9061713962DAFC1C3FD7C40E3 /* Debug */,
 				92F415033A0E6011D4C9F2D59DB4F419 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3EDBC73A3A867FAF805F6AD8BA76E535 /* Build configuration list for PBXNativeTarget "JBWebViewController" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				90AAC7F06EB16BD045B985FDDC4DEE21 /* Debug */,
-				BA2B652509922986DE1D85AF80EB2B27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -17,7 +17,13 @@
 
 @property (nonatomic, strong) NSString *deviceUUID;
 @property (nonatomic, strong) NSString *currentMemberId;  //useid
-@property (nonatomic, strong) NSString *currentMemberId2;
+@property (nonatomic, strong) NSString *currentMemberId2;  // workingID
+
+// 商城项目
+@property (nonatomic, assign) NSInteger cartNumber;  // 1 进入chat 2 离开chat
+
+
+
 @property (nonatomic, assign, getter = isFirstLaunch) BOOL firstLaunch;
 
 @property (nonatomic, strong) NSDictionary *categoryData;
@@ -30,7 +36,7 @@
 @property (nonatomic,strong) NSString *address;
 @property (nonatomic,strong) NSString *territoryId;
 @property (nonatomic,strong) NSString *cityId;
-@property (nonatomic,strong) NSString *phone;
+
 @property (nonatomic,strong) NSString *memberUserShell;
 
 @property (nonatomic,strong) NSString *deviceToken;
@@ -41,8 +47,7 @@
 @property (nonatomic,strong) NSString *lang;
 
 
-// 商城项目
-@property (nonatomic, assign) NSInteger cartNumber;
+
 
 @property (nonatomic, strong) NSString *store_free_price;
 

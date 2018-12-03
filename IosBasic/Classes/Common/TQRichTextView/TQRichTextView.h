@@ -41,4 +41,6 @@
 
 + (CGFloat)heightWithText:(NSString *)string width:(CGFloat)width font:(UIFont *)font;
 
++ (CGSize)sizeWithText:(NSString *)string width:(CGFloat)width font:(UIFont *)font;
+
 @end

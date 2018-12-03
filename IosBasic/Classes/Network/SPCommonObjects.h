@@ -59,6 +59,27 @@
 @end
 
 
+@interface ChatMessageObject : NACommonObject
+
+@property (nonatomic,strong) NSString *id;
+@property (nonatomic,strong) NSString *content;
+
+@property (nonatomic,strong) NSString *type; // 1 好友添加消息  2 系统消息
+
+@property (nonatomic,strong) NSString *title;  // 系统短语
+
+
+
+@property (nonatomic,strong) NSNumber *sendTime;
+@property (nonatomic,strong) NSString *sendTimeStr;
+
+@property (nonatomic,strong) NSString *avatar;
+@property (nonatomic,strong) NSNumber *isSelf;
+@property (nonatomic,strong) NSString *sid;
+@property (nonatomic,strong) NSString *tid;
+
+@end
+
 
 
 @interface ECAreaModel : NACommonObject
@@ -301,18 +322,27 @@
 
 @interface ECMemberObject : NACommonObject
 
-@property (nonatomic, strong) NSString * userId;
-@property (nonatomic, strong) NSString * nickName;
-@property (nonatomic, strong) NSNumber * gender;
+@property (nonatomic, strong) NSString * id;
+@property (nonatomic, strong) NSString * member_user_shell;
 @property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * work_num;
+
+@property (nonatomic, strong) NSString * token;   // 设备token值
+@property (nonatomic, strong) NSNumber * isAccept; // 1 接受 2 不接受
+
+@property (nonatomic, strong) NSString * start_time; //
+@property (nonatomic, strong) NSNumber * end_time; //  这个用不到了
+
+@property (nonatomic, strong) NSString * working_id; //
+
+@property (nonatomic, strong) NSNumber * state; // 1 未开始 2 开始了
+
+// 暂时不用
 @property (nonatomic, strong) NSString * phone;
 @property (nonatomic, strong) NSString * email;
-@property (nonatomic, strong) NSString * avatar;
-@property (nonatomic, strong) NSString * member_user_shell;
-@property (nonatomic, strong) NSString * level;
-@property (nonatomic, strong) NSNumber * cartNumber; // 购物车商品数量
-@property (nonatomic, strong) NSNumber * totalCost; // 累计消费
-@property (nonatomic, strong) NSNumber * balanceNum; // 余额
+
+
+
 
 @end
 

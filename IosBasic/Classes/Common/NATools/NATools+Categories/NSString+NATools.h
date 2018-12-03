@@ -26,8 +26,7 @@
     
 - (NSString *)hideStringFromRangeToRange:(NSRange)range withString:(NSString *)string;
 
-
-
++ (NSString *)backDateString:(NSDate *)date;
 // 正则判断手机号码地址格式
 - (BOOL)isMobileNumber;
 //验证电话号码

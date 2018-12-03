@@ -11,7 +11,25 @@
 #import "SPMember.h"
 #import "NADefaults.h"
 #import <YYModel/YYModel.h>
-#import "ChinaData.h"
+
+
+// 易通的
+static NSString *const kECLoginURL = @"api/login"; //用户登录接口
+static NSString *const kECNotificationURL = @"api/setting_notify"; //是否接受通知
+static NSString *const kECStartURL = @"api/start_work"; //开始任务
+static NSString *const kECEndURL = @"api/finish_work"; //开始任务
+
+static NSString *const kECUpdateLocationURL = @"api/location";
+static NSString *const kECCheckLoginURL = @"api/single_login";
+
+static NSString *const kECGetChatURL = @"api/chat";
+
+static NSString *const kECSendChatURL = @"api/send";
+static NSString *const kECGetMessageURL = @"api/common_message";
+
+static NSString *const kSPVersionURL = @"api/version"; // 版本号
+static NSString *const kSPSendToken   = @"api/token" ; //发送 手机 token ，用于推送
+
 
 static NSString *const KECMainBanURL = @"app/index_banner";  //首页ban
 static NSString *const KECGetCityURL = @"app/area_list";  // 地区信息
@@ -30,7 +48,7 @@ static NSString *const KECGetGoodsURL = @"app/prodlist";
 static NSString *const KECGetHotSearchURL = @"index.php?act=app_interf&op=hot_search";
 static NSString *const KECGetGoodsDetailURL = @"app/product";
 static NSString *const KECGetGoodsCommentURL = @"index.php?act=app_interf&op=comments_list";
-static NSString *const kECLoginURL = @"app/login"; //用户登录接口
+
 static NSString *const kECFindPWDURL = @"app/forgetpsw"; //用户登录接口
 static NSString *const kECGetAddressURL = @"app/address_list";
 static NSString *const kECEditNewAdressURL = @"index.php?act=app_interf&op=address_edit";
@@ -73,7 +91,7 @@ static NSString *const KECGetOrderMessageURL = @"app/balance";
 static NSString *const KECGetwareURL = @"app/warehouse_list";
 static NSString *const KECGetexpressURL = @"app/express_list";
 static NSString *const KECDeleteOrderMessageURL = @"index.php?act=app_interf&op=system_msg_del";
-static NSString *const kSPVersionURL = @"app/version"; // 版本号
+
 static NSString *const kSPSendMsg = @"app/get_captcha"; //短信发送
 
 
@@ -98,7 +116,7 @@ static NSString *const kSPMessageURL = @"api/message";
 static NSString *const kSPHomeURL = @"api/home";
 static NSString *const kSPAccountIncomeURL = @"api/account_income";
 static NSString *const kSPDoLimit = @"api/do_limit";
-static NSString *const kSPSendToken   = @"api/token" ; //发送 手机 token ，用于推送
+
 
 static NSString *const kSPResetPassworad = @"api/forgotpwd"; //忘记密码，重置密码接口
 static NSString *const kSPMsgResetPassworad = @"api/forgotpwd"; //短信找回和重置密码接口
@@ -156,69 +174,7 @@ static NSString *const kSPErrorReport = @"app/error"; // 系统错误信息
         [self showError:error];
     }];
 }
-- (void)getCityWithCompletion:(SPCommonResultBlock)block{
-    [self GET:KECGetCityURL parameters:nil success:^(NSURLSessionDataTask *task, id responseObject){
-        NALog(@"-----> ResposeObject is");
-        // 这里的数据怎么变成数组了
-        [self parseDataWithResposeObject:responseObject completion:^(BOOL success, id data){
-            // 在这里使用 FMBD讲地址信息存储在本地
-             if (data && [data isKindOfClass:[NSArray class]]) {
-                 ChinaData *china = [[ChinaData alloc]initWith:data];
-                  block(YES,china,nil);
-             }else
-             {
-                 block(NO, nil, nil);
-             }
-            /*
-            if (data && [data isKindOfClass:[NSArray class]]) {
-                NSMutableArray *array = [[NSMutableArray alloc] init];
-                for (NSDictionary *dic in data) {
-                    ECCityObject *obj = [[ECCityObject alloc]init];
-                    obj.idNumber = dic[@"area_id"];
-                    obj.name = dic[@"area_name"];
-                    NSMutableArray *muarray2 = [NSMutableArray array];
-                    if ([dic[@"area_son"] isKindOfClass:[NSArray class]]) {
-                        NSArray *array2 = dic[@"area_son"];
-                        for (NSDictionary *dic2 in array2) {
-                            ECCityObject *obj2 = [[ECCityObject alloc]init];
-                            obj2.idNumber = dic2[@"area_id"];
-                            obj2.name = dic2[@"area_name"];
-                             NSMutableArray *muarray3 = [NSMutableArray array];
-                            if ([dic2[@"area_son"] isKindOfClass:[NSArray class]]) {
-                               NSArray *array3 = dic2[@"area_son"];
-                                for (NSDictionary *dic3 in array3) {
-                                    ECCityObject *obj3 = [[ECCityObject alloc]init];
-                                    obj3.idNumber = dic3[@"area_id"];
-                                    obj3.name = dic3[@"area_name"];
-                                    obj3.cityid = dic3[@"area_parent_id"];
-                                    [muarray3 addObject:obj3];
-                                }
-                                if (muarray3.count>0) {
-                                    obj2.sonArray = muarray3;
-                                }
-                                
-                            }
-                            [muarray2 addObject:obj2];
-                        }
-                        
-                    }
-                    if (muarray2.count >0) {
-                        obj.sonArray = muarray2;
-                    }
-                    [array addObject:obj];
-                }
-                block(YES,array,nil);
-            }else
-            {
-                block(NO, nil, nil);
-            }
-            */
-        }];
-    } failure:^(NSURLSessionDataTask *task, NSError *error){
-        NALog(@"-----> Failure with Error : %@", error);
-        [self showError:error];
-    }];
-}
+
 - (void)getMainHotAndNewGoodsWithParames:(NSDictionary *)parames Completion:(SPCommonResultBlock)block{
     NSLog(@"%@",parames);
     [self POST:KECMainHotAndNewURL parameters:parames success:^(NSURLSessionDataTask *task, id responseObject){
@@ -442,14 +398,29 @@ static NSString *const kSPErrorReport = @"app/error"; // 系统错误信息
     NALog(@"-----> params is : %@", params);
     [self POST:kECLoginURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
         NALog(@"-----> ResposeObject is : %@", responseObject);
-        [self parseDataWithResposeObject:responseObject completion:^(BOOL success, id data){
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
             if (block && success) {
-                ECMemberObject *obj = [ECMemberObject  yy_modelWithJSON:data];
-                NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithDictionary:data];
-                if (![dataDic checkObjectForKey:@"level"]) {
-                     obj.level = @"普通会员";
+                NSDictionary *userIDc = [NSDictionary dictionary];
+                if ([data checkObjectForKey:@"user"]) {
+                    userIDc = data[@"user"];
                 }
-
+                ECMemberObject *obj = [ECMemberObject  yy_modelWithJSON:userIDc];
+                
+//              // 测试
+//              obj.isAccept = @(0);
+                
+                NSDictionary *dataDic = data;
+                if ([dataDic checkObjectForKey:@"working"]) {
+                    NSDictionary *workingDic = dataDic[@"working"];
+                    if ([workingDic checkObjectForKey:@"id"]) {
+                        obj.working_id = workingDic[@"id"];
+                        [NADefaults sharedDefaults].currentMemberId2 = workingDic[@"id"];
+                    }
+                    if ([workingDic checkObjectForKey:@"start_time"]) {
+                        obj.start_time = workingDic[@"start_time"];
+                    }
+                }
+                
                 block(YES,obj,nil);
             }else{
                 block(NO,data,nil);
@@ -629,6 +600,187 @@ static NSString *const kSPErrorReport = @"app/error"; // 系统错误信息
           block(NO,nil,nil);
     }];
 }
+- (void)postChangeNotificationWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block{
+    NALog(@"-----> params is : %@", params);
+    [self POST:kECNotificationURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
+            if (block && success) {
+                //                MemberObject *obj = [MemberObject  yy_modelWithJSON:data];
+                block(YES,data,nil);
+            }else{
+                block(NO,data,nil);
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+- (void)postStartWorkWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block{
+    NALog(@"-----> params is : %@", params);
+    [self POST:kECStartURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
+            if (block && success) {
+                // MemberObject *obj = [MemberObject  yy_modelWithJSON:data];
+                NSDictionary *workingDic = data;
+                if ([workingDic checkObjectForKey:@"working_id"]) {
+                    [NADefaults sharedDefaults].currentMemberId2 = workingDic[@"working_id"];
+                }
+                block(YES,data,nil);
+            }else{
+                block(NO,data,nil);
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+- (void)postEndWorkWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block{
+    NALog(@"-----> params is : %@", params);
+    [self POST:kECEndURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
+            if (block && success) {
+                // MemberObject *obj = [MemberObject  yy_modelWithJSON:data];
+                block(YES,data,nil);
+            }else{
+                block(NO,data,nil);
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+- (void)postUpdateLocationWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block{
+    NALog(@"-----> params is : %@", params);
+    [self POST:kECUpdateLocationURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
+            if (block && success) {
+                block(YES,data,nil);
+            }else{
+                block(NO,data,nil);
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+
+- (void)postcheckLoginWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block{
+    NALog(@"-----> params is : %@", params);
+    [self POST:kECCheckLoginURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
+            if (block && success) {
+                block(YES,data,nil);
+            }else{
+                block(NO,data,nil);
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+
+- (void)getChatListWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block{
+    NALog(@"-----> params is : %@", params);
+    [self GET:kECGetChatURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
+            if (data && [data isKindOfClass:[NSArray class]]) {
+                NSMutableArray *array = [[NSMutableArray alloc] init];
+                for (NSDictionary *dic in data) {
+                    ChatMessageObject *obj1 = [ChatMessageObject yy_modelWithJSON:dic];
+                    [array addObject:obj1];
+                }
+                array = (NSMutableArray *)[[array reverseObjectEnumerator] allObjects];
+                block(YES,array,nil);
+            }else{
+                block(NO, nil, nil);
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+// 发送聊天-----
+- (void)postSendMessageListWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block{
+    NALog(@"-----> params is : %@", params);
+    [self POST:kECSendChatURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
+            if (block && success) {
+                block(YES,data,nil);
+            }else{
+                block(NO,data,nil);
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+// 获取聊天短语-----
+- (void)getMessageListWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block{
+    NALog(@"-----> params is : %@", params);
+    [self GET:kECGetMessageURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
+            if (data && [data isKindOfClass:[NSArray class]]) {
+                NSMutableArray *array = [[NSMutableArray alloc] init];
+                for (NSDictionary *dic in data) {
+                    ChatMessageObject *obj1 = [ChatMessageObject yy_modelWithJSON:dic];
+                    [array addObject:obj1.title];
+                }
+                block(YES,array,nil);
+            }else{
+                block(NO, nil, nil);
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+
+//发送手机 token ，用于推送
+- (void)postTokenWithParams:(NSDictionary *)params completion:(SPCommonResultBlock)block{
+    [self POST:kSPSendToken parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
+            if (block && success) {
+                if ([data isKindOfClass:[NSDictionary class]]) {
+                    block(YES,data,nil);
+                }
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+
+
+- (void)getAppVersion:(NSDictionary *)params completion:(SPCommonResultBlock)block
+{
+    NALog(@"-----> params is : %@",params);
+    // 目前接口返回版本号，固定为1.0。。。。
+    [self GET:kSPVersionURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
+        NALog(@"-----> ResposeObject is : %@", responseObject);
+        [self parseDataWithResposeObject:responseObject[0] withToast:NO completion:^(BOOL success, id data){
+            if (block && success) {
+                block(YES,data,nil);
+            }
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        [self showError:error];
+    }];
+}
+
+//发送手机 token ，用于推送
+//- (void)postTokenWithParams:(NSDictionary *)params completion:(SPCommonResultBlock)block;
+// 版本号
+//- (void)getAppVersion:(NSDictionary *)params completion:(SPCommonResultBlock)block;
+
 - (void)delegateUserAddressWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block{
     NALog(@"-----> params is : %@", params);
     [self POST:kECDelateNewAdressURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
@@ -1645,37 +1797,7 @@ static NSString *const kSPErrorReport = @"app/error"; // 系统错误信息
     }];
 }
 
-//发送手机 token ，用于推送
-- (void)postTokenWithParams:(NSDictionary *)params completion:(SPCommonResultBlock)block{
-    [self POST:kSPSendToken parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
-        NALog(@"-----> ResposeObject is : %@", responseObject);
-        [self parseDataWithResposeObject:responseObject[0] completion:^(BOOL success, id data){
-            if (block && success) {
-                if ([data isKindOfClass:[NSDictionary class]]) {
-                    block(YES,data,nil);
-                }
-            }
-        }];
-    } failure:^(NSURLSessionDataTask *task, NSError *error){
-        [self showError:error];
-    }];
-}
 
-
-- (void)getAppVersion:(NSDictionary *)params completion:(SPCommonResultBlock)block
-{
-     NALog(@"-----> params is : %@",params);
-    [self GET:kSPVersionURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject){
-        NALog(@"-----> ResposeObject is : %@", responseObject);
-        [self parseDataWithResposeObject:responseObject withToast:NO completion:^(BOOL success, id data){
-            if (block && success) {
-                block(YES,data,nil);
-            }
-        }];
-    } failure:^(NSURLSessionDataTask *task, NSError *error){
-        [self showError:error];
-    }];
-}
 
 
 // 发送错误日志

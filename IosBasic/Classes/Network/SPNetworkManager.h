@@ -40,6 +40,33 @@ typedef void (^SPUserDataResultBlock)(BOOL succeeded, id responseObject , NSInte
 
 #pragma mark-----ECShop
 
+
+// 登陆
+- (void)loginWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+// 是否接收通知
+- (void)postChangeNotificationWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+// 开始结束任务----OK
+- (void)postStartWorkWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+// 结束任务-----
+- (void)postEndWorkWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+// 上传坐标-----
+- (void)postUpdateLocationWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+// 获取聊天-----
+- (void)getChatListWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+
+// 避免多客户端登录
+- (void)postcheckLoginWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+
+// 发送聊天-----
+- (void)postSendMessageListWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+// 获取聊天短语-----
+- (void)getMessageListWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+//发送手机 token ，用于推送
+- (void)postTokenWithParams:(NSDictionary *)params completion:(SPCommonResultBlock)block;
+// 版本号
+- (void)getAppVersion:(NSDictionary *)params completion:(SPCommonResultBlock)block;
+
+
 //首页ban
 - (void)getMainBanImagesWithCompletion:(SPCommonResultBlock)block;
 
@@ -82,14 +109,11 @@ typedef void (^SPUserDataResultBlock)(BOOL succeeded, id responseObject , NSInte
 
 // 切换地址返回邮费及hash值
 - (void)changeAddressWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
-// 获取区域
-- (void)getCityWithCompletion:(SPCommonResultBlock)block;
 
 - (void)usedVoucherWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
 // 注册
 - (void)signUpWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block ;
-// 登陆
-- (void)loginWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
+
 // 发送短信
 - (void)sendMsgWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
 // 找回密码
@@ -212,10 +236,7 @@ typedef void (^SPUserDataResultBlock)(BOOL succeeded, id responseObject , NSInte
 
 - (void)doLimitWithParams:(NSDictionary *)params  completion:(SPCommonResultBlock)block;
 
-//发送手机 token ，用于推送
-- (void)postTokenWithParams:(NSDictionary *)params completion:(SPCommonResultBlock)block;
-// 版本号
-- (void)getAppVersion:(NSDictionary *)params completion:(SPCommonResultBlock)block;
+
 
 // 发送错误日志
 - (void)postErrorWithString:(NSString *)errorString completion:(void(^)())block;

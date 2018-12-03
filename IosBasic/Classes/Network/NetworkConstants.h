@@ -15,7 +15,7 @@ static NSString *const m_cate_name = @"name";
 
 // 接口参数
 
-static NSString *const m_id = @"member_id";
+static NSString *const m_id = @"userId";
 static NSString *const mC_id = @"id";
 static NSString *const m_membername = @"member_name";
 static NSString *const m_memberemail = @"member_email";
@@ -57,9 +57,12 @@ static NSString *const m_region = @"region";
 static NSString *const m_name = @"user_name";
 static NSString *const m_password = @"password";
 static NSString *const m_ver = @"ver_ios";
-static NSString *const m_udid = @"udid_ios";
+//static NSString *const m_udid = @"udid_ios";
+
+static NSString *const m_udid = @"udid";
+
 static NSString *const m_token = @"token_ios";
-static NSString *const m_member_user_shell = @"member_user_shell";
+static NSString *const m_member_user_shell = @"member_shell";
 static NSString *const m_email = @"email";
 
 static NSString *const m_money_type = @"moneyType";
@@ -152,7 +155,7 @@ static NSString *const m_isfollow = @"isfollow";
 
 static NSString *const m_SearchKey_cateid = @"cate_id";
 
-static NSString *const m_SearchKey_page = @"pages";
+static NSString *const m_SearchKey_page = @"page";
 static NSString *const m_SearchKey_limit = @"limits";
 static NSString *const m_SearchKey_order = @"order";
 static NSString *const m_SearchKey_key = @"key";

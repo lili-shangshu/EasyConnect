@@ -53,6 +53,10 @@
 
 + (instancetype)pink;
 
+//iOS中十六进制的颜色（以#开头）转换为UIColor
++ (instancetype)colorWithHexString: (NSString *)color;
+
+
 + (instancetype)NA_ColorWithR:(CGFloat)red g:(CGFloat)green b:(CGFloat)blue;
 + (instancetype)colorWithR:(CGFloat)red g:(CGFloat)green b:(CGFloat)blue a:(CGFloat)alpha;
 + (instancetype)blueIOSColor;

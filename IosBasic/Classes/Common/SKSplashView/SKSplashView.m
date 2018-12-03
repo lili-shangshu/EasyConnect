@@ -13,6 +13,10 @@
 
 @property (nonatomic, assign) SKSplashAnimationType animationType;
 @property (nonatomic, assign) SKSplashIcon *splashIcon;
+
+@property(nonatomic,strong) NSTimer *timer;
+@property(nonatomic,strong)UILabel *titlelable;
+@property(nonatomic) CGFloat number;
 @property (strong, nonatomic) CAAnimation *customAnimation;
 
 @end
@@ -56,6 +60,8 @@
         imageView.frame = self.bounds;
         [self addSubview:imageView];
     }
+    // 划线
+    [self drawLine];
     
     return self;
 }
@@ -108,8 +114,24 @@
 
 #pragma mark - Public methods
 
+- (void)drawLine{
+    UILabel *loadLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, NAScreenHeight/2-20, NAScreenWidth, 40)];
+    [loadLbl setLabelWith:@"Loading" color:[UIColor whiteColor] font:[UIFont boldSystemFontOfSize:20] aliment:NSTextAlignmentCenter];
+    self.titlelable  =loadLbl;
+    [self addSubview:loadLbl];
+    self.number = 0;
+    self.backgroundColor = [UIColor colorWithHexString:@"#1a7bc0"];
+    
+}
+
 - (void)startAnimation;
+
 {
+    //间隔时间
+    CGFloat timee= 3.0/8;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:timee target:self selector:
+                  @selector(circleAnimation) userInfo:nil repeats:YES];
+    
     if(_splashIcon)
     {
         NSDictionary *dic = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%f",self.animationDuration] forKey:@"animationDuration"];
@@ -126,7 +148,7 @@
             [self addBounceAnimation];
             break;
         case SKSplashAnimationTypeFade:
-            [self addFadeAnimation];
+//            [self addFadeAnimation];
             break;
         case SKSplashAnimationTypeZoom:
             [self addZoomAnimation];
@@ -144,13 +166,38 @@
             }
             else
             {
-                [self addCustomAnimationWithAnimation:[self customAnimation]];
+//                [self addCustomAnimationWithAnimation:[self customAnimation]];
             }
             break;
         default:NSLog(@"No animation type selected");
             break;
     }
 }
+
+//定时器每次时间到了执行
+- (void)circleAnimation{
+   
+    NSLog(@"======%.1f",self.number);
+    self.number += 1;
+    NSString *lableStr = @"Loading";
+    if(self.number==1){
+         lableStr=@"Loading.";
+    }else if (self.number==2){
+        lableStr=@"Loading..";
+    }else if (self.number==3){
+        lableStr=@"Loading...";
+    }else{
+        //停止计时器
+        lableStr=@"Loading...";
+        [self.timer invalidate];
+        self.timer = nil;
+        [self removeFromSuperview];
+        [self endAnimating];
+    }
+    self.titlelable.text = lableStr;
+    
+}
+
 
 - (void) setCustomAnimationType:(CAAnimation *)animation
 {
@@ -241,7 +288,6 @@
         [self removeFromSuperview];
         [self endAnimating];
     }];
-
 }
 
 - (void) addShrinkAnimation

@@ -157,6 +157,68 @@
     }
 }
 
++ (NSString *)backDateString:(NSDate *)date{
+    NSString *dateStr = @"";
+    NSDateFormatter *fam = [[NSDateFormatter alloc]init];
+    [fam setDateFormat:@"EEEE"];
+    NSString *string1 = [fam stringFromDate:date];
+    NSLog(@"中文%@",string1);
+    if ([string1 isEqualToString:@"星期一"]||[string1 isEqualToString:@"Monday"]) {
+        string1 = @"Monday";
+    }else if ([string1 isEqualToString:@"星期二"]||[string1 isEqualToString:@"Tuesday"]){
+        string1 = @"Tuesday";
+    }else if ([string1 isEqualToString:@"星期三"]||[string1 isEqualToString:@"Wednesday"]){
+        string1 = @"Wednesday";
+    }else if ([string1 isEqualToString:@"星期四"]||[string1 isEqualToString:@"Thursday"]){
+        string1 = @"Thursday";
+    }else if ([string1 isEqualToString:@"星期五"]||[string1 isEqualToString:@"Friday"]){
+        string1 = @"Friday";
+    }else if ([string1 isEqualToString:@"星期六"]||[string1 isEqualToString:@"Saturday"]){
+        string1 = @"Saturday";
+    }else{
+        string1 = @"Sunday";
+    }
+    NSLog(@"星期：%@",string1);
+    dateStr  = [dateStr stringByAppendingString:string1];
+    dateStr  = [dateStr stringByAppendingString:@","];
+    [fam setDateFormat:@"dd"];
+    NSString *string = [fam stringFromDate:date];
+    NSLog(@"日：%@",string);
+    dateStr  = [dateStr stringByAppendingString:string];
+    dateStr  = [dateStr stringByAppendingString:@" "];
+    [fam setDateFormat:@"MMMM"];
+    NSString *string2 = [fam stringFromDate:date];
+    NSLog(@"月：%@",string2);
+    if ([string2 isEqualToString:@"一月"]||[string2 isEqualToString:@"January"]) {
+        string2 = @"January";
+    }else if([string2 isEqualToString:@"二月"]||[string2 isEqualToString:@"February"]){
+        string2 = @"February";
+    }else if([string2 isEqualToString:@"三月"]||[string2 isEqualToString:@"March"]){
+        string2 = @"March";
+    }else if([string2 isEqualToString:@"四月"]||[string2 isEqualToString:@"April"]){
+        string2 = @"April";
+    }else if([string2 isEqualToString:@"五月"]||[string2 isEqualToString:@"May"]){
+        string2 = @"May";
+    }else if([string2 isEqualToString:@"六月"]||[string2 isEqualToString:@"June"]){
+        string2 = @"June";
+    }else if([string2 isEqualToString:@"七月"]||[string2 isEqualToString:@"July"]){
+        string2 = @"July";
+    }else if([string2 isEqualToString:@"八月"]||[string2 isEqualToString:@"August"]){
+        string2 = @"August";
+    }else if([string2 isEqualToString:@"九月"]||[string2 isEqualToString:@"September"]){
+        string2 = @"September";
+    }else if([string2 isEqualToString:@"十月"]||[string2 isEqualToString:@"October"]){
+        string2 = @"October";
+    }else if([string2 isEqualToString:@"十一月份"]||[string2 isEqualToString:@"November"]){
+        string2 = @"November";
+    }else{
+        string2 = @"December";
+    }
+    NSLog(@"月份：%@",string2);
+    dateStr  = [dateStr stringByAppendingString:string2];
+    NSLog(@"实际需要的是%@",dateStr);
+    return dateStr;
+}
 
 - (NSString *)hideStringFromRangeToRange:(NSRange)range withString:(NSString *)string
 {

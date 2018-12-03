@@ -207,7 +207,24 @@ goto check;
          }];
     }
 }
-
++ (CGSize)sizeWithText:(NSString *)string width:(CGFloat)width font:(UIFont *)font{
+    
+    NSString *stripStr = [TQRichTextView shortenEmotionString:string];
+    
+    //    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    //    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    //    paragraphStyle.alignment = NSTextAlignmentLeft;
+    //
+    //    CGRect contentFrame = [stripStr boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{ NSFontAttributeName : font } context:nil];
+    
+    CGSize size = [stripStr sizeWithFont:font constrainedToSize:CGSizeMake(180.0f, 20000.0f) lineBreakMode:NSLineBreakByWordWrapping];
+    if(size.height> 25.f){
+        size.height = size.height*1.1;
+        
+    }
+    
+    return size;
+}
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint location = [(UITouch *)[touches anyObject] locationInView:self];
